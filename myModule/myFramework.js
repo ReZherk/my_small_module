@@ -30,4 +30,33 @@ myFramework.Router = function () {
   };
 };
 
+myFramework.logger = function () {
+  const logs = [];
+
+  function saveLog(type, message) {
+    const entry = {
+      type,
+      message,
+      date: new Date().toISOString(),
+    };
+    logs.push(entry);
+  }
+
+  return {
+    info(message) {
+      saveLog("INFO", message);
+      console.log("[INFO]", message);
+    },
+
+    error(message) {
+      saveLog("ERROR", message);
+      console.error("[ERROR]", message);
+    },
+
+    getLogs() {
+      return logs;
+    },
+  };
+};
+
 module.exports = myFramework;

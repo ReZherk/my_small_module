@@ -17,3 +17,10 @@ router.get("/users", () => {});
 router.get("/products", () => {});
 
 console.log(router.listRoutes());
+
+const logger = myFramework.logger();
+
+logger.info("Servidor iniciado");
+logger.error("Error de conexión");
+
+console.log(logger.getLogs());
